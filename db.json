@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "img": "/src/assets/img/drevene-sachy-ambassador-de-lux-original-110x110.webp",
+      "name": "Šachy Ambassador střední",
+      "availability": "Skladem",
+      "price": 1690,
+      "quantity": 1
+    },
+    {
+      "id": "2",
+      "img": "/src/assets/img/drevene-sachy-ambassador-de-lux-original-110x110.webp",
+      "name": "Šachy Ambassador střední",
+      "availability": "Skladem",
+      "price": 1690,
+      "quantity": 1
+    },
+    {
+      "id": "3",
+      "img": "/src/assets/img/drevene-sachy-ambassador-de-lux-original-110x110.webp",
+      "name": "Šachy Ambassador střední",
+      "availability": "Skladem",
+      "price": 1690,
+      "quantity": 1
+    },
+    {
+      "id": "4",
+      "img": "/src/assets/img/drevene-sachy-ambassador-de-lux-original-110x110.webp",
+      "name": "Šachy Ambassador střední",
+      "availability": "Skladem",
+      "price": 1690,
+      "quantity": 2
+    }
+  ]
+}

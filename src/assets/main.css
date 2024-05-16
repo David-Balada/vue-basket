@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Poppins", sans-serif;
+    @apply text-sm;
+}
+
+button {
+    @apply bg-transparent border-none cursor-pointer;
+}
+
+a {
+    @apply no-underline;
+}
+
