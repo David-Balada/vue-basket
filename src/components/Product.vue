@@ -8,12 +8,12 @@ defineEmits(["remove-item", "decrement-quantity", "increment-quantity", "product
     <div class="flex items-center py-4">
       <img :src="product.img" :alt="product.name" class="product-img" />
       <div class="flex items-center flex-row grow">
-        <p class="text-lg px-4 py-2">{{ product.name }}</p>
-        <p class="px-4 py-2 text-green-600">{{ product.availability }}</p>
-        <p class="px-4 py-2">{{ product.price }} Kč</p>
-        <p class="px-4 py-2">{{ product.price * product.quantity }} Kč</p>
+        <p class="grow text-lg px-4 py-2">{{ product.name }}</p>
+        <p class="w-32 px-4 py-2 text-green-600">{{ product.availability }}</p>
+        <p class="w-24 px-4 py-2">{{ product.price }} Kč</p>
+        <p class="w-24 px-4 py-2">{{ product.price * product.quantity }} Kč</p>
       </div>
-      <div class="w-64 flex items-center flex-row justify-end">
+      <div class="flex items-center flex-row justify-end">
         <div class="flex px-4 py-2">
           <button
               class="decrement-btn p-2 hover:text-red-600"
