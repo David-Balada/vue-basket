@@ -2,9 +2,6 @@
 // Reactivity, Computed, Lifecycle hook
 import { ref, computed, onMounted } from "vue";
 
-// local image
-//import makeupImage from "@/assets/img/drevene-sachy-ambassador-de-lux-original-110x110.webp";
-
 // components
 import Header from "@/components/Header.vue";
 import Product from "@/components/Product.vue";
@@ -60,12 +57,6 @@ onMounted(async () => {
 });
 
 // methods
-/**** Sync ****/
-// const removeItem = ($event) => {
-//   const productId = $event;
-
-//   products.value = products.value.filter((product) => product.id !== productId);
-// };
 
 /**** Async ****/
 const removeItem = async ($event) => {
@@ -80,18 +71,58 @@ const removeItem = async ($event) => {
   products.value = products.value.filter((product) => product.id !== productId);
 };
 
-/**** Sync ****/
-// const decrementQuantity = ($event) => {
-//   const productId = $event;
+const productCount = async ($event, mode) => {
+  const productId = $event;
+  const productIndex = products.value.findIndex(
+      (product) => product.id === productId
+  );
 
-//   const productIndex = products.value.findIndex(
-//     (product) => product.id === productId
-//   );
+  if (mode === 'input') {
+    if (products.value[productIndex].quantity === 0) removeItem(productId);
+    else {
+      const productToUpdate = await fetchProduct(productId);
+      const updatedProduct = {
+        ...productToUpdate,
+        quantity: products.value[productIndex].quantity
+      };
 
-//   // if quantity is 1, remove item
-//   if (products.value[productIndex].quantity === 1) removeItem(productId);
-//   else products.value[productIndex].quantity--;
-// };
+      const response = await fetch(
+          `http://localhost:5000/products/${productId}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-type": "application/json"
+            },
+            body: JSON.stringify(updatedProduct)
+          }
+      );
+
+      products.value[productIndex].quantity = updatedProduct.quantity;
+    }
+  } else {
+    if (products.value[productIndex].quantity === 1 && mode === 'minus') removeItem(productId);
+    else {
+      const productToUpdate = await fetchProduct(productId);
+      const updatedProduct = {
+        ...productToUpdate,
+        quantity: mode === 'minus' ? --productToUpdate.quantity : ++productToUpdate.quantity
+      };
+
+      const response = await fetch(
+          `http://localhost:5000/products/${productId}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-type": "application/json"
+            },
+            body: JSON.stringify(updatedProduct)
+          }
+      );
+
+      products.value[productIndex].quantity = updatedProduct.quantity;
+    }
+  }
+}
 
 /**** Async ****/
 const decrementQuantity = async ($event) => {
@@ -104,6 +135,7 @@ const decrementQuantity = async ($event) => {
   if (products.value[productIndex].quantity === 1) removeItem(productId);
   else {
     const productToUpdate = await fetchProduct(productId);
+
     const updatedProduct = {
       ...productToUpdate,
       quantity: --productToUpdate.quantity
@@ -123,17 +155,6 @@ const decrementQuantity = async ($event) => {
     products.value[productIndex].quantity = updatedProduct.quantity;
   }
 };
-
-/**** Sync ****/
-// const incrementQuantity = ($event) => {
-//   const productId = $event;
-
-//   const productIndex = products.value.findIndex(
-//     (product) => product.id === productId
-//   );
-
-//   products.value[productIndex].quantity++;
-// };
 
 /**** Async ****/
 const incrementQuantity = async ($event) => {
@@ -195,17 +216,17 @@ const fetchProduct = async (productId) => {
           :key="product.id"
           :product="product"
           @remove-item="removeItem"
+          @product-count="productCount"
           @decrement-quantity="decrementQuantity"
           @increment-quantity="incrementQuantity"
       />
     </div>
     <!-- footer -->
     <div class="basket-footer">
-      <div class="total">
+      <div class="flex items-center justify-end">
         <p>Celkem</p>
-        <p><strong>{{ cartTotal }} Kč</strong></p>
+        <p class="text-lg ml-2"><strong>{{ cartTotal }} Kč</strong></p>
       </div>
-      <a href="#" class="checkout-link">Pokračovat</a>
     </div>
   </main>
 </template>
