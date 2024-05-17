@@ -23,36 +23,6 @@ const cartTotal = computed(() =>
 
 // lifecycle
 onMounted(async () => {
-  // products.value = [
-  //   {
-  //     id: 1,
-  //     img: makeupImage,
-  //     name: "Red lipstick",
-  //     price: 16,
-  //     quantity: 2
-  //   },
-  //   {
-  //     id: 2,
-  //     img: makeupImage,
-  //     name: "Red lipstick",
-  //     price: 16,
-  //     quantity: 1
-  //   },
-  //   {
-  //     id: 3,
-  //     img: makeupImage,
-  //     name: "Red lipstick",
-  //     price: 16,
-  //     quantity: 1
-  //   },
-  //   {
-  //     id: 4,
-  //     img: makeupImage,
-  //     name: "Red lipstick",
-  //     price: 16,
-  //     quantity: 1
-  //   }
-  // ];
   products.value = await fetchProducts();
 });
 

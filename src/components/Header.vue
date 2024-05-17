@@ -10,7 +10,7 @@
         <img src="/src/assets/img/logo-zanapo-cz-index.svg" alt="logo">
       </a>
     </div>
-    <div class="contact w-3/4 flex flex-col items-end p-3.5">
+    <div class="contact w-3/4 flex flex-col items-end p-3.5 text-lg">
       <a class="text-green-600 font-bold hover:underline" href="tel:+420666555444">+420 666 555 444</a>
       <a class="font-bold hover:underline" href="mailto:info@zanapo.cz">info@zanapo.cz</a>
     </div>

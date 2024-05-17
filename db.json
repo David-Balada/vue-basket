@@ -14,7 +14,7 @@
       "name": "Šachy Ambassador střední",
       "availability": "Skladem",
       "price": 1690,
-      "quantity": 3
+      "quantity": 2
     },
     {
       "id": "3",
@@ -22,7 +22,7 @@
       "name": "Šachy Ambassador střední",
       "availability": "Skladem",
       "price": 1690,
-      "quantity": 5
+      "quantity": 4
     },
     {
       "id": "4",
@@ -30,7 +30,7 @@
       "name": "Šachy Ambassador střední",
       "availability": "Skladem",
       "price": 1690,
-      "quantity": 4
+      "quantity": 3
     }
   ]
 }

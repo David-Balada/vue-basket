@@ -4,7 +4,7 @@ defineEmits(["remove-item", "decrement-quantity", "increment-quantity", "product
 </script>
 
 <template>
-  <div class="mb-2.5 ">
+  <div class="mb-2.5 border-b border-b-gray-100">
     <div class="flex items-center py-4">
       <img :src="product.img" :alt="product.name" class="product-img" />
       <div class="flex items-center flex-row grow">
